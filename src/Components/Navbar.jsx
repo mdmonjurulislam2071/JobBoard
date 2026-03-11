@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { use } from 'react';
 import { NavLink } from 'react-router';
 import { IoLogoTux } from "react-icons/io5";
+import { AuthContext } from '../Context/AuthContext';
 
 
 const Navbar = () => {
+
+  const {user}=use(AuthContext)
      
     const links=<>
      <li><NavLink to={'/'}>Home</NavLink></li>
@@ -34,8 +37,10 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end gap-2">
-    <a className="btn btn-sm ">Register</a>
-    <a className="btn btn-sm">Login</a>
+   {
+    user? <button className='btn text-white bg-blue-900 border-none'>LogOut</button>:<> <NavLink  to={'/register'}  className="btn btn-sm ">Register</NavLink>
+    <NavLink to={'/login'} className="btn btn-sm">Login</NavLink></>
+   }
   </div>
 </div>
     );

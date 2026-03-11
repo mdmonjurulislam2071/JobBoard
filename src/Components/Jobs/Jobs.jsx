@@ -21,7 +21,7 @@ const Jobs = ({ jobsPromise }) => {
       {/* grid */}
       <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
         {jobs.slice(0, visibleCount).map(job => (
-          <Job key={job.id} job={job} />
+          <Job key={job.job_Id} job={job} />
         ))}
       </div>
 
