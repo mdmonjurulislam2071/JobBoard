@@ -28,7 +28,7 @@ const JobDetails = () => {
 
     const fetchJobDetails = async () => {
         try {
-            const response = await axios.get(`http://localhost:3000/jobs/${id}`);
+            const response = await axios.get(`https://job-board-server-omega.vercel.app/jobs/${id}`);
             if (response.data.success) {
                 setJob(response.data.job);
             } else {
@@ -59,7 +59,7 @@ const JobDetails = () => {
     const checkIfApplied = async () => {
         setCheckingApplication(true);
         try {
-            const response = await axios.get('http://localhost:3000/my-applications', {
+            const response = await axios.get('https://job-board-server-omega.vercel.app/my-applications', {
                 withCredentials: true
             });
             if (response.data.success) {

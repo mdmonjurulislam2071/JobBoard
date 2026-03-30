@@ -42,7 +42,7 @@ const ApplyJob = () => {
         const fetchJobDetails = async () => {
             try {
                 console.log("Fetching job details for ID:", id);
-                const response = await axios.get(`http://localhost:3000/jobs/${id}`);
+                const response = await axios.get(`https://job-board-server-omega.vercel.app/jobs/${id}`);
                 
                 if (response.data.success) {
                     setJob(response.data.job);
@@ -183,7 +183,7 @@ const ApplyJob = () => {
             };
             
             const response = await axios.post(
-                `http://localhost:3000/applyjob/${id}`,
+                `https://job-board-server-omega.vercel.app/applyjob/${id}`,
                 applicationData,
                 {
                     headers: {

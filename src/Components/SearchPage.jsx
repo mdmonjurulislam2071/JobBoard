@@ -20,7 +20,7 @@ const SearchPage = () => {
   const fetchAndFilterJobs = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:3000/jobs');
+      const response = await axios.get('https://job-board-server-omega.vercel.app/jobs');
       
       if (response.data.success) {
         let filteredJobs = response.data.jobs;

@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000';
+const API_URL = 'https://job-board-server-omega.vercel.app';
 
 export const jobService = {
   getMyJobs: async () => {

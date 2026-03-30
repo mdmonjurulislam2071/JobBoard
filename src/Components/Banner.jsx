@@ -20,7 +20,7 @@ const ringAnimation = (duration, direction = 1) => ({
 
 const Banner = () => {
   // API call with credentials and error handling
-  const jobsPromise = fetch('http://localhost:3000/jobs', {
+  const jobsPromise = fetch('https://job-board-server-omega.vercel.app/jobs', {
     credentials: 'include', // cookie পাঠানোর জন্য (যদি প্রয়োজন হয়)
     headers: {
       'Content-Type': 'application/json',

@@ -31,7 +31,7 @@ const PostJob = () => {
       // email পাঠানো হচ্ছে না
     };
 
-    fetch('http://localhost:3000/post-job', {
+    fetch('https://job-board-server-omega.vercel.app/post-job', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

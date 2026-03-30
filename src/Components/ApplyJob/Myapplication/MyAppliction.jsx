@@ -22,7 +22,7 @@ const MyAppliction = () => {
     const fetchApplications = async () => {
         try {
             const response = await axios.get(
-                'http://localhost:3000/my-applications',
+                'https://job-board-server-omega.vercel.app/my-applications',
                 {
                     withCredentials: true
                 }

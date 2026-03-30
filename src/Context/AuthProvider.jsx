@@ -17,7 +17,7 @@ const AuthProvider = ({ children }) => {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const firebaseUser = userCredential.user;
       
-      const response = await fetch("http://localhost:3000/users", {
+      const response = await fetch("https://job-board-server-omega.vercel.app/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -46,7 +46,7 @@ const AuthProvider = ({ children }) => {
       const firebaseUser = userCredential.user;
       
       const token = await firebaseUser.getIdToken();
-      const jwtResponse = await fetch("http://localhost:3000/jwt", {
+      const jwtResponse = await fetch("https://job-board-server-omega.vercel.app/jwt", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -54,7 +54,7 @@ const AuthProvider = ({ children }) => {
       });
       
       if (jwtResponse.ok) {
-        const profileRes = await fetch("http://localhost:3000/profile", {
+        const profileRes = await fetch("https://job-board-server-omega.vercel.app/profile", {
           credentials: "include",
         });
         
@@ -77,7 +77,7 @@ const AuthProvider = ({ children }) => {
 
   const logOutUser = async () => {
     try {
-      await fetch("http://localhost:3000/logout", {
+      await fetch("https://job-board-server-omega.vercel.app/logout", {
         method: "POST",
         credentials: "include",
       });
@@ -93,7 +93,7 @@ const AuthProvider = ({ children }) => {
       if (currentUser) {
         try {
           setLoading(true);
-          const profileRes = await fetch("http://localhost:3000/profile", {
+          const profileRes = await fetch("https://job-board-server-omega.vercel.app/profile", {
             method: "GET",
             credentials: "include",
           });
