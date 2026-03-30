@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../Components/navbar'
+import Navbar from '../Components/Navbar'
 import FirefliesBackground from '../Components/FirefliesBackground';
 import { Outlet } from 'react-router';
 import Footer from '../Components/Footer';
