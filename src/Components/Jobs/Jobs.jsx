@@ -1,42 +1,51 @@
 import React, { use, useState } from 'react';
-import Job from './Job';
+import Job from './Job'
 
 const Jobs = ({ jobsPromise }) => {
+ 
+  const jobsData = use(jobsPromise);
+  
 
-  const jobs = use(jobsPromise);
-
+  const jobs = Array.isArray(jobsData) ? jobsData : jobsData?.jobs || [];
+  
   const [visibleCount, setVisibleCount] = useState(10);
 
   const handleLoadMore = () => {
     setVisibleCount(prev => prev + 10);
   };
 
+  // console.log('Jobs data:', jobs); 
+
   return (
     <div className='max-w-7xl mx-auto px-4 py-10'>
-
       <h1 className='text-3xl font-semibold mb-8'>
         All <span className='text-yellow-400'>Job Post</span> here
       </h1>
 
-      {/* grid */}
-      <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
-        {jobs.slice(0, visibleCount).map(job => (
-          <Job key={job.job_Id} job={job} />
-        ))}
-      </div>
+      {jobs.length === 0 ? (
+        <p className="text-center text-gray-500">No jobs available</p>
+      ) : (
+        <>
+          {/* grid */}
+          <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+            {jobs.slice(0, visibleCount).map(job => (
+              <Job key={job._id || job.job_Id} job={job} />
+            ))}
+          </div>
 
-      {/* load more button */}
-      {visibleCount < jobs.length && (
-        <div className="text-center mt-10">
-          <button
-            onClick={handleLoadMore}
-            className="bg-gradient-to-r from-violet-600 to-indigo-600 px-8 py-3 rounded-xl font-semibold text-white hover:scale-105 transition"
-          >
-            Load More
-          </button>
-        </div>
+          {/* load more button */}
+          {visibleCount < jobs.length && (
+            <div className="text-center mt-10">
+              <button
+                onClick={handleLoadMore}
+                className="bg-gradient-to-r from-violet-600 to-indigo-600 px-8 py-3 rounded-xl font-semibold text-white hover:scale-105 transition"
+              >
+                Load More
+              </button>
+            </div>
+          )}
+        </>
       )}
-
     </div>
   );
 };
